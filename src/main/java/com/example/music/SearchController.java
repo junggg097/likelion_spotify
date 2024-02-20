@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SearchController {
     private final SearchService service;
 
-    @GetMapping("")
+    @GetMapping
     public Object search(
             @RequestParam("q")
             String q,

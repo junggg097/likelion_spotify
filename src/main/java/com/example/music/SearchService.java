@@ -22,22 +22,21 @@ public class SearchService {
     ) {
         // /search?q=q&type=type&...
         String url = UriComponentsBuilder.fromUriString("/search")
-                .queryParam("q",q)
+                .queryParam("q", q)
                 .queryParam("type", type)
                 .queryParam("market", market)
                 .queryParam("limit", limit)
                 .queryParam("offset", offset)
                 .build(false)
                 .toUriString();
-
         // Bearer Token 준비
         String tokenHeaderValue
-                = "Bearer " + tokenService.getAccessToken().getAccessToken();
+//                = "Bearer " + tokenService.getAccessToken().getAccessToken();
+                = "Bearer " + tokenService.getToken();
         return spotifyClient.get()
                 .uri(url)
                 .header("Authorization", tokenHeaderValue)
                 .retrieve()
                 .body(Object.class);
     }
-
 }
